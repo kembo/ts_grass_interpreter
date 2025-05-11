@@ -5,7 +5,7 @@ import {
   dummyInputFunc,
   dummyInputText,
   dummyOutputFunc,
-} from "./test_init.ts";
+} from "../test_init.ts";
 import { initializeGlobalStack } from "../../grass_init.ts";
 
 Deno.test("[0](In) - Input function", async (t) => {

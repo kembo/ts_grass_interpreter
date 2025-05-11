@@ -1,7 +1,7 @@
 /** GrassCharacter's other tests are here: {@link ../../grass_character.test.ts} */
 
 import { assertEquals } from "@std/assert";
-import { getStackByDummy } from "./test_init.ts";
+import { getStackByDummy } from "../test_init.ts";
 
 Deno.test('[1]("w") - GrassCharacter of small "w"', () => {
   const stack = getStackByDummy();

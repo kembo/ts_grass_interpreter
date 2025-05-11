@@ -1,7 +1,7 @@
 import { assertEquals, assertThrows } from "@std/assert";
 import { assertSpyCallArg, assertSpyCalls, spy } from "@std/testing/mock";
 import { initializeGlobalStack } from "../../grass_init.ts";
-import { dummyFunc, dummyInputFunc, dummyOutputFunc } from "./test_init.ts";
+import { dummyFunc, dummyInputFunc, dummyOutputFunc } from "../test_init.ts";
 import { GrassTypeError } from "../../types.ts";
 
 Deno.test("[3](Out) - Output function", () => {

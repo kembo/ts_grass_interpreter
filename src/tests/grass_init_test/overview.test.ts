@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { getStackByDummy } from "./test_init.ts";
+import { getStackByDummy } from "../test_init.ts";
 
 const stack = getStackByDummy();
 
