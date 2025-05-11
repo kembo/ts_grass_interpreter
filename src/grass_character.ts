@@ -22,7 +22,7 @@ const asAsciiCode = (c: number): AsciiCode =>
   (0 <= c && c <= 255 && Number.isInteger(c)) ? c : 0;
 /** Grass における文字型. */
 export type GrassCharacter = {
-  readonly type: "charcter";
+  readonly type: "character";
   /** 実際の文字コード */
   readonly value: number;
   readonly prog: (arg: GrassFunction) => GrassBoolean;
@@ -34,14 +34,16 @@ const generated: Record<AsciiCode, GrassCharacter> = {};
  * 一度生成したオブジェクトは記録し, 生成済みの場合過去のオブジェクトを返す.
  */
 export function createGrassCharacter(char: string | number): GrassCharacter {
-  const c: number = (typeof char === "string") ? char.charCodeAt(0) : char;
+  const c: number = (typeof char === "string")
+    ? char.codePointAt(0) ?? 0
+    : char;
   const code = asAsciiCode(c);
   if (!(code in generated)) {
     generated[code] = {
-      type: "charcter",
+      type: "character",
       value: code,
       prog: (arg) =>
-        (arg.type === "charcter" && arg.value === code)
+        (arg.type === "character" && arg.value === code)
           ? GRASS_TRUE
           : GRASS_FALSE,
     };
