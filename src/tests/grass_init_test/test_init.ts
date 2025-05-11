@@ -1,5 +1,5 @@
-import { initializeGlobalStack } from "../../src/grass_init.ts";
-import type { GrassRawFunction } from "../../src/types.ts";
+import { initializeGlobalStack } from "../../grass_init.ts";
+import type { GrassRawFunction } from "../../types.ts";
 
 const dummyInputText = "Hi!";
 const dummyInputFunc = () => dummyInputText;

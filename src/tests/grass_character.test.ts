@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { createGrassCharacter } from "../src/grass_character.ts";
+import { createGrassCharacter } from "../grass_character.ts";
 
 Deno.test("Create a 'w' character", () => {
   const c_w = createGrassCharacter("w");

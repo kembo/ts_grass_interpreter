@@ -1,7 +1,7 @@
 import { assertEquals, assertThrows } from "@std/assert";
-import { dummyFunc, getStackByDummy } from "../test_init.ts";
-import { createGrassCharacter } from "../../../src/grass_character.ts";
-import { GrassTypeError } from "../../../src/types.ts";
+import { dummyFunc, getStackByDummy } from "./test_init.ts";
+import { createGrassCharacter } from "../../grass_character.ts";
+import { GrassTypeError } from "../../types.ts";
 
 Deno.test("[2](Succ) - Successor function", () => {
   const stack = getStackByDummy();
