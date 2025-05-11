@@ -30,10 +30,24 @@ export type GlobalStack = [
 /** Grass 上の関数型の定義 */
 export type GrassFunction = GrassClosure | GrassRawFunction | GrassCharacter;
 
-/** Grass における "関数適用" を示す */
+/** プリミティブ関数以外の Grass プログラム処理中に一般に発生するクロージャ */
+export type GrassClosure = {
+  readonly type: "closure";
+  readonly prog: readonly GrassApplication[];
+  /** 引数 = ローカルのスタック */
+  readonly args: readonly GrassFunction[];
+  /** 引数の個数 */
+  readonly argLength: number;
+};
+
+/**
+ * Grass における "関数適用" を示す.
+ * 要素は GrassFunction の直接参照か, またはスタックのインデックス.
+ * インデックスはローカルスタックの一番底を 0 とする.
+ */
 export type GrassApplication = readonly [
-  func: GrassFunction,
-  arg: GrassFunction,
+  func: GrassFunction | number,
+  arg: GrassFunction | number,
 ];
 
 /** Grass 処理中の引数の型の不整合 */
@@ -55,16 +69,6 @@ export type GrassBasicFunction = (arg: GrassFunction) => GrassFunction;
 export type GrassRawFunction = AbstractGrassFunction & {
   readonly type: "raw";
   readonly prog: GrassBasicFunction;
-};
-
-/** プリミティブ関数以外の Grass プログラム処理中に一般に発生するクロージャ */
-export type GrassClosure = {
-  readonly type: "closure";
-  readonly prog: readonly GrassApplication[];
-  /** グローバルスタック */
-  readonly stackIndex: number;
-  readonly stack: readonly GrassClosure[];
-  readonly argLength: number;
 };
 
 export { GrassCharacter };
