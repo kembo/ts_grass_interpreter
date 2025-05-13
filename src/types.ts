@@ -60,15 +60,15 @@ export type AbstractGrassFunction = {
   /** GrassFunction の種類(固定値) */
   readonly type: string;
   /** GrassFunction の処理の実態 */
-  readonly prog: readonly GrassApplication[] | GrassBasicFunction;
+  readonly prog: readonly GrassApplication[] | NativeFunction;
 };
 
 /** 主にプリミティブ関数内で使われる, 直接実行するタイプの関数の中身 */
-export type GrassBasicFunction = (arg: GrassFunction) => GrassFunction;
+export type NativeFunction = (arg: GrassFunction) => GrassFunction;
 /** 主に GrassCharacter 以外の, javascript 側で実行可能な処理実態を持つ GrassFunction */
 export type GrassRawFunction = AbstractGrassFunction & {
   readonly type: "raw";
-  readonly prog: GrassBasicFunction;
+  readonly prog: NativeFunction;
 };
 
 export { GrassCharacter };
