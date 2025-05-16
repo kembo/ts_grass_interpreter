@@ -50,10 +50,13 @@ export type GrassApplication = readonly [
   arg: GrassFunction | number,
 ];
 
+/** Grass 処理中のエラー */
+export class GrassError extends Error {}
+
 /** Grass 処理中の引数の型の不整合 */
-export class GrassTypeError extends TypeError {
-  static readonly isGrass = false;
-}
+export class GrassTypeError extends GrassError {}
+/** Grass 関数適用またはパース中のインデックスの不整合 */
+export class GrassIndexError extends GrassError {}
 
 /** 全ての GrassFunction 型の基礎 */
 export type AbstractGrassFunction = {
